@@ -6,11 +6,11 @@ import {
   FlatList,
   ActivityIndicator,
 } from 'react-native';
-import BookList from '../components/BookList';
 import BookCollection from '../components/BookCollection';
 import BookContext from '../context/BookStoreContext';
 import {Switch} from 'react-native-switch';
 // import GetLocation from 'react-native-get-location';
+
 import {
   Avatar,
   Button,
@@ -42,16 +42,18 @@ const Home = ({navigation}) => {
     <>
       <Appbar.Header style={styles.topheader}>
         <Appbar.BackAction onPress={navigation.goBack} />
-        <Appbar.Content title="Book App" />
-        <Switch
-          activeText={'Collection'}
-          inActiveText={'List'}
-          backgroundActive={'#14992f'}
-          backgroundInactive={'#fc5603'}
-          onValueChange={toggleSwitch}
-          value={isEnabled}
-          switchWidthMultiplier={isEnabled ? 4 : 3}
-        />
+        <Appbar.Content style={styles.paperHeader} title="Book App" />
+        <View style={{marginRight: 10}}>
+          <Switch
+            activeText={'Collection'}
+            inActiveText={'List'}
+            backgroundActive={'#14992f'}
+            backgroundInactive={'#fc5603'}
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+            switchWidthMultiplier={isEnabled ? 4 : 3}
+          />
+        </View>
       </Appbar.Header>
       <View style={styles.container}>
         {loading ? (
@@ -82,12 +84,12 @@ const Home = ({navigation}) => {
                     marginBottom: 20,
                   }}>
                   <Card.Cover
-                    source={{
-                      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTigq6uJh5hME3jnf0MNd8Y6EENCGBS4gfYjQ&usqp=CAU',
-                    }}
+                    style={{height: 210}}
+                    resizeMode="contain"
+                    source={require('/Learning/React - Native/BookApp/assets/minion.jpg')}
                   />
                   <Card.Content>
-                    <Title>{item.API}</Title>
+                    <Title style={styles.text}>{item.API}</Title>
                     <Paragraph>{item.Description}</Paragraph>
                   </Card.Content>
                   <Card.Actions>
@@ -101,13 +103,6 @@ const Home = ({navigation}) => {
                     </Button>
                   </Card.Actions>
                 </Card>
-                // <BookList
-                //   title={item.API}
-                //   img={item.img}
-                //   desc={item.Description}
-                //   id={index}
-                //   onPress={() => navigation.navigate('Purchase', {id: id})}
-                // />
               );
             }}
           />
@@ -133,9 +128,10 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   text: {
-    fontSize: 20,
-    fontStyle: 'italic',
-    fontWeight: '700',
+    fontSize: 22,
+    // fontStyle: 'italic',
+    // fontWeight: '700',
+    fontFamily: 'Fredoka-Medium',
   },
 });
 

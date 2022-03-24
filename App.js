@@ -6,9 +6,10 @@ import PurchaseScreen from './src/screens/PurchaseScreen';
 import {BookDataProvider} from './src/context/BookStoreContext';
 import SignIn from './src/screens/SignIn';
 import SignUp from './src/screens/Signup';
-import Index from './Source/screens/Index';
+// import Index from './Source/screens/Index';
 import {Provider as PaperProvider} from 'react-native-paper';
-import Animation from './Source/screens/Animated';
+// import Animation from './Source/screens/Animated';
+// import Calender from './Source/screens/Calender';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,13 @@ const navigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* <Stack.Screen
+          name="Calender"
+          component={Calender}
+          options={{
+            title: 'Calender',
+          }}
+        /> */}
         {/* <Stack.Screen
           name="Animation"
           component={Animation}
