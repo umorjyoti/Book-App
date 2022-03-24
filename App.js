@@ -9,6 +9,7 @@ import SignUp from './src/screens/Signup';
 import Index from './Source/screens/Index';
 import {Provider as PaperProvider} from 'react-native-paper';
 import Animation from './Source/screens/Animated';
+import Calender from './Source/screens/Calender';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,13 @@ const navigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Calender"
+          component={Calender}
+          options={{
+            headerShown: false,
+          }}
+        />
         {/* <Stack.Screen
           name="Animation"
           component={Animation}
