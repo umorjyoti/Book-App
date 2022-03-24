@@ -17,19 +17,26 @@ const navigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         {/* <Stack.Screen
+          name="Calender"
+          component={Calender}
+          options={{
+            headerShown: false,
+          }}
+        /> */}
+        {/* <Stack.Screen
           name="Animation"
           component={Animation}
           options={{
             headerShown: false,
           }}
         /> */}
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Index"
           component={Index}
           options={{
             headerShown: false,
           }}
-        /> */}
+        />
         <Stack.Screen
           name="SignIn"
           component={SignIn}
