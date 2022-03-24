@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
   },
   headingText1: {
     fontSize: 40,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'Fredoka-Medium',
     color: 'black',
   },
   headingText2: {

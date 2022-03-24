@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 import BookContext from '../context/BookStoreContext';
 import constants from '../static/constants';
@@ -6,27 +6,31 @@ import {Button, Card, Title, Paragraph} from 'react-native-paper';
 
 const BookCollection = ({img, title, desc, id, onPress}) => {
   const {orders} = useContext(BookContext);
+  const [showText, setShowText] = useState(false);
 
   return (
     <View style={styles.container}>
-      {/* <View style={styles.subContainer}>
-        <View>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.price}>{desc}</Text>
-        </View>
-        <Button
-          title={orders.includes(id) ? constants.purchased : constants.buy}
-          color={
-            orders.includes(id) ? constants.purchasedColor : constants.buyColor
-          }
-          onPress={onPress}
+      <Card
+        style={
+          showText ? {height: 320, width: '100%'} : {height: 280, width: '100%'}
+        }>
+        <Card.Cover
+          style={{height: 110}}
+          resizeMode="contain"
+          source={require('/Learning/React - Native/BookApp/assets/minion.jpg')}
         />
-      </View> */}
-      <Card style={styles.card}>
-        <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
         <Card.Content>
-          <Title>{title}</Title>
-          <Paragraph>{desc}</Paragraph>
+          <Title style={styles.text}>{title}</Title>
+          <Paragraph
+            numberOfLines={showText ? null : 2}
+            onPress={() => {
+              if (showText) {
+                return setShowText(false);
+              }
+              return setShowText(true);
+            }}>
+            {desc}
+          </Paragraph>
         </Card.Content>
         <Card.Actions style={styles.action}>
           <Button onPress={onPress}>
@@ -39,54 +43,22 @@ const BookCollection = ({img, title, desc, id, onPress}) => {
 };
 
 const styles = StyleSheet.create({
-  // container: {
-  //   width: Dimensions.get('window').width / 2.18,
-  //   backgroundColor: 'pink',
-  //   marginBottom: 10,
-  //   marginRight: 10,
-  //   borderRadius: 10,
-  //   alignItems: 'center',
-  //   justifyContent: 'space-between',
-  // },
-  // subContainer: {
-  //   height: 170,
-  //   padding: 10,
-  //   width: '100%',
-  //   justifyContent: 'space-between',
-  // },
-  // image: {
-  //   marginTop: 10,
-  //   height: 150,
-  //   width: 100,
-  // },
-  // title: {
-  //   fontSize: 20,
-  //   color: 'black',
-  //   marginBottom: 2,
-  // },
-  // price: {
-  //   fontSize: 13,
-  //   fontWeight: 'bold',
-  // },
-
   container: {
     width: Dimensions.get('window').width / 2.18,
-    height: 420,
     marginBottom: 10,
     marginRight: 10,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  card: {
-    width: '100%',
-    height: '100%',
-    borderWidth: 1,
-  },
   action: {
     flex: 1,
     alignSelf: 'center',
     alignItems: 'flex-end',
+  },
+  text: {
+    fontSize: 18.5,
+    fontFamily: 'Fredoka-Medium',
   },
 });
 
